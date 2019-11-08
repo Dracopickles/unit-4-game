@@ -16,11 +16,14 @@ let wins = 0;
 
 let loses = 0;
 
+function updateScore(newScore){
+  $("#usersNumber").text("Your Score: "+ newScore);
+}
 // create a function that displays all your stats
 const gameStartStats = function() {
 $("#current-number").text(gameNumber);
 console.log(gameNumber);
-$("#usersNumber").text("Your Score: ",userScore);
+updateScore(userScore);
 console.log(userScore);
 crystalMaker();
 }
@@ -39,14 +42,19 @@ const crystalMaker = function() {
 
 
     $("#crystals").append(imageCrystal);
+    console.log(numberOptions);
   }
 }
 
 let crystalClick = function() {
+  console.log("clicked");
   var crystalValue = ($(this).attr("data-crystalvalue"));
+  console.log("crystal value is: ",crystalValue);
   crystalValue = parseInt(crystalValue);
   
   userScore += crystalValue;
+  console.log("userscore is: ", userScore);
+  updateScore(userScore);
 }
 
 // create a function that resets game in the reset funtion you want to 
@@ -85,5 +93,9 @@ const checkingTheWin = function() {
 
 gameStartStats();
 
-$(".crystalImage").on("click", crystalClick);
+
+$( document ).ready(function() {
+  console.log( "ready!" );
+  $(".crystalImage").on("click", crystalClick);
+});
 checkingTheWin();
