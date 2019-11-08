@@ -5,27 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
+  <div class="container">
 
   <h1> Crystal Game</h1>
+  <div>
+      <strong>Wins:
+          <span id="win-counter">0</span> 
+        </strong>
+  </div>
+   <div>
+      <strong>Losses:
+          <span id="lose-counter">0</span> 
+        </strong>
+   </div>
+   <div>
+  <strong>Number to guess: <span id=current-number></span></strong>
+</div>
+  <div>
+  <strong>
+      <span id=usersNumber></span> 
+  </strong>
+  </div>
 
-  <strong id=win-counter></strong>
+  <div id="crystals"></div>
 
-  <strong id=lose-counter></strong>
+</div>
 
-  <strong id=current-number></strong>
-
-  <strong id=users-number></strong>
-
-  <button id=crystal-one>crystal-one</button>
-
-  <button id=crystal-two>crystal-two</button>
-
-  <button id=crytal-three>crystal-three</button>
-
-  <button id=crystal-four>crystal-four</button>
-  
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="./assets/javascript/game.js"></script>
 
 </body>
 
