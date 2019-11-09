@@ -22,9 +22,7 @@ function updateScore(newScore){
 // create a function that displays all your stats
 const gameStartStats = function() {
 $("#current-number").text(gameNumber);
-console.log(gameNumber);
 updateScore(userScore);
-console.log(userScore);
 crystalMaker();
 }
 
@@ -42,18 +40,15 @@ const crystalMaker = function() {
 
 
     $("#crystals").append(imageCrystal);
-    console.log(numberOptions);
   }
 }
 
 let crystalClick = function() {
-  console.log("clicked");
   var crystalValue = ($(this).attr("data-crystalvalue"));
   console.log("crystal value is: ",crystalValue);
   crystalValue = parseInt(crystalValue);
   
   userScore += crystalValue;
-  console.log("userscore is: ", userScore);
   updateScore(userScore);
 }
 
@@ -95,7 +90,6 @@ gameStartStats();
 
 
 $( document ).ready(function() {
-  console.log( "ready!" );
   $(".crystalImage").on("click", crystalClick);
 });
 checkingTheWin();
