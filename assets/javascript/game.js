@@ -16,17 +16,22 @@ let wins = 0;
 
 let loses = 0;
 
-function updateScore(newScore){
-  $("#usersNumber").text("Your Score: "+ newScore);
+function updateGameNumber(newGameNumber){
+  $("#current-number").text("Your Number to Guess: "+ newGameNumber);
+}
+
+function updateScore(scoreArg){
+  userScore = scoreArg;
+  $("#usersNumber").text("Your Score: "+ scoreArg);
 }
 // create a function that displays all your stats
-const gameStartStats = function() {
-$("#current-number").text(gameNumber);
+let gameStartStats = function() {
+updateGameNumber(gameNumber);
 updateScore(userScore);
 crystalMaker();
 }
 
-const crystalMaker = function() {
+let crystalMaker = function() {
   let numberOptions = [crystalNumbersOne, crystalNumbersTwo, crystalNumbersThree, crystalNumbersFour];
 
   for (let i = 0; i < numberOptions.length; i++) {
@@ -44,22 +49,26 @@ const crystalMaker = function() {
 }
 
 let crystalClick = function() {
-  var crystalValue = ($(this).attr("data-crystalvalue"));
+  let crystalValue = ($(this).attr("data-crystalvalue"));
   console.log("crystal value is: ",crystalValue);
   crystalValue = parseInt(crystalValue);
   
   userScore += crystalValue;
   updateScore(userScore);
+  checkingTheWin();
 }
 
 // create a function that resets game in the reset funtion you want to 
 //set the total score back to zero and generate new random numbers. 
 // and have it call first function for reset
-const gameReset = function() {
-  $("current-number").text(gameNumber);
-  $("#users-number").text("Your Score: ",userScore);
-  gameStartStats();
+let gameReset = function() {
+  console.log("in Game Reset");
+  let randomGameNumber = Math.floor(Math.random() * 102)+19
+  updateGameNumber(randomGameNumber);
+  updateScore(0);
+  $("#crystals").empty();
   crystalMaker();
+  // gameStartStats();
 } 
 
 // create a function to check for the win and the first part is to 
@@ -67,7 +76,7 @@ const gameReset = function() {
 //if so add to win and if they win call the reset function at the end
 //and a else if, if the user score is greater then the number they lose
 //increase there loses and call the reset the function
-const checkingTheWin = function() {
+let checkingTheWin = function() {
 
   if (userScore === gameNumber){
     wins++,
@@ -90,6 +99,7 @@ gameStartStats();
 
 
 $( document ).ready(function() {
-  $(".crystalImage").on("click", crystalClick);
+  $(document).on("click", ".crystalImage", crystalClick);
+  // checkingTheWin();
 });
-checkingTheWin();
+// checkingTheWin();
